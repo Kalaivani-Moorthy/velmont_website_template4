@@ -1,6 +1,9 @@
-import { siteInfo } from '../data'
+import { useContent } from '../context/ContentContext'
 
 function Footer() {
+  const { content } = useContent()
+  const { siteInfo } = content
+
   return (
     <footer className="bg-[#2A1B12] py-12 text-[#F2E7DA]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-[1.2fr_1fr] md:px-8">

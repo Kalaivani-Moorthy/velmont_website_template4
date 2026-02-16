@@ -1,9 +1,11 @@
-import hero from '../assets/pic8.jpg'
-import { coreInitiatives } from '../data'
+﻿import hero from '../assets/pic8.jpg'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 function AboutPage() {
   useReveal()
+  const { content } = useContent()
+  const { coreInitiatives } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -53,3 +55,4 @@ function AboutPage() {
 }
 
 export default AboutPage
+

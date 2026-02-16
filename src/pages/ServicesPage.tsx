@@ -1,17 +1,11 @@
 import pic2 from '../assets/pic2.jpg'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
-
-const services = [
-  ['Abhishekam', '$51', 'Sacred bathing ritual for divine blessings with mantra chanting.'],
-  ['Archana', '$21', 'Offering of divine names and flowers for focused prayer intentions.'],
-  ['Homam', '$101', 'Vedic fire ritual for health, clarity, protection, and prosperity.'],
-  ['Wedding Ceremony', 'Contact', 'Traditional Hindu wedding rituals guided by temple priests.'],
-  ['Naming Ceremony', '$51', 'Namakarana ceremony for newborn blessings and family prayer.'],
-  ['Pooja Sponsorship', '$151', 'Sponsor daily pooja in your name or in memory of loved ones.'],
-]
 
 function ServicesPage() {
   useReveal()
+  const { content } = useContent()
+  const { services } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -26,7 +20,7 @@ function ServicesPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="space-y-4">
-          {services.map(([title, fee, desc], idx) => (
+          {services.map(({ title, fee, desc }, idx) => (
             <article key={title} data-reveal="true" className="grid gap-4 rounded-2xl border border-[#4A3523]/15 bg-white p-5 opacity-0 translate-y-8 transition-all duration-700 md:grid-cols-[0.7fr_2fr_0.7fr] md:items-center" style={{ transitionDelay: `${idx * 70}ms` }}>
               <p className="text-xl font-black text-[#2D1D12]">{title}</p>
               <p className="text-[#5C4634]">{desc}</p>

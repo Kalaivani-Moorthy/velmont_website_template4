@@ -1,5 +1,5 @@
 import support from '../assets/donate.png'
-import { siteInfo } from '../data'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 const tiers = [
@@ -12,6 +12,8 @@ const tiers = [
 
 function DonatePage() {
   useReveal()
+  const { content } = useContent()
+  const { siteInfo } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">

@@ -1,10 +1,12 @@
-import pic3 from '../assets/caro5.jpg'
+﻿import pic3 from '../assets/caro5.jpg'
 import pic4 from '../assets/caro6.jpg'
-import { events } from '../data'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 function EventsPage() {
   useReveal()
+  const { content } = useContent()
+  const { events } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -40,3 +42,4 @@ function EventsPage() {
 }
 
 export default EventsPage
+

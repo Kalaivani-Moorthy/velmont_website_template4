@@ -9,13 +9,15 @@ import caro4 from '../assets/caro4.jpg'
 import caro5 from '../assets/caro5.jpg'
 import pic10 from '../assets/pic10.jpg'
 import pic12 from '../assets/pic12.jpg'
-import { wixImages } from '../data'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 const gallery = [hero, pic2, pic3, pic4, caro1, caro2, caro3, caro4, caro5,pic10,pic12, ]
 
 function GalleryPage() {
   useReveal()
+  const { content } = useContent()
+  const combinedGallery = [...content.galleryUrls, ...gallery]
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -28,7 +30,7 @@ function GalleryPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {gallery.map((image, idx) => (
+          {combinedGallery.map((image, idx) => (
             <article key={`${image}-${idx}`} data-reveal="true" className="mb-4 break-inside-avoid overflow-hidden rounded-2xl opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: `${idx * 60}ms` }}>
               <img src={image} alt="Velmont" className="w-full object-cover transition duration-700 hover:scale-105" />
             </article>

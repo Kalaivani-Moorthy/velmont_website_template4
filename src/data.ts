@@ -1,3 +1,5 @@
+import type { ContentData } from './types'
+
 export const siteInfo = {
   name: 'VelMont Spiritual Center',
   email: 'contact@velmont.org',
@@ -62,4 +64,23 @@ export const events = [
 export const wixImages = {
   hero: 'https://static.wixstatic.com/media/f8394a_9f4c6beef44c44c4b16f379f6cabf429~mv2.jpg/v1/fill/w_1868,h_1051,al_c,q_85,enc_avif,quality_auto/f8394a_9f4c6beef44c44c4b16f379f6cabf429~mv2.jpg',
   gallery: 'https://static.wixstatic.com/media/f8394a_6f928f9a194f4ec9aa22f8f376024557~mv2.jpg/v1/fill/w_1868,h_1051,al_c,q_85,enc_avif,quality_auto/f8394a_6f928f9a194f4ec9aa22f8f376024557~mv2.jpg',
+}
+
+export const services = [
+  { title: 'Abhishekam', fee: '$51', desc: 'Sacred bathing ritual for divine blessings with mantra chanting.' },
+  { title: 'Archana', fee: '$21', desc: 'Offering of divine names and flowers for focused prayer intentions.' },
+  { title: 'Homam', fee: '$101', desc: 'Vedic fire ritual for health, clarity, protection, and prosperity.' },
+  { title: 'Wedding Ceremony', fee: 'Contact', desc: 'Traditional Hindu wedding rituals guided by temple priests.' },
+  { title: 'Naming Ceremony', fee: '$51', desc: 'Namakarana ceremony for newborn blessings and family prayer.' },
+  { title: 'Pooja Sponsorship', fee: '$151', desc: 'Sponsor daily pooja in your name or in memory of loved ones.' },
+]
+
+export const defaultContentData: ContentData = {
+  siteInfo,
+  missionText,
+  visionText,
+  coreInitiatives,
+  events,
+  services,
+  galleryUrls: [],
 }

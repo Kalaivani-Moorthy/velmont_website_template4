@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import logo from '../assets/logo_temple.png'
+import { useAuth } from '../context/AuthContext'
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -14,6 +15,7 @@ const navLinks = [
 
 function Navbar() {
   const [open, setOpen] = useState(false)
+  const { user, logout } = useAuth()
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 py-4 md:px-8">
@@ -48,6 +50,22 @@ function Navbar() {
               </NavLink>
             </li>
           ))}
+          <li className="ml-2">
+            {user ? (
+              <div className="flex items-center gap-2">
+                <NavLink to="/admin" className="rounded-xl bg-[#3E2719] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#F5ECE0]">
+                  Admin
+                </NavLink>
+                <button onClick={logout} className="rounded-xl border border-[#4A3523]/30 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4A3523] hover:bg-[#EADBC5]">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <NavLink to="/login" className="rounded-xl bg-[#3E2719] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#F5ECE0]">
+                Login
+              </NavLink>
+            )}
+          </li>
         </ul>
       </div>
 
@@ -68,6 +86,36 @@ function Navbar() {
                 </NavLink>
               </li>
             ))}
+            <li>
+              {user ? (
+                <div className="space-y-1">
+                  <NavLink
+                    to="/admin"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg bg-[#3E2719] px-3 py-2 text-sm uppercase tracking-[0.18em] text-[#F5ECE0]"
+                  >
+                    Admin
+                  </NavLink>
+                  <button
+                    onClick={() => {
+                      logout()
+                      setOpen(false)
+                    }}
+                    className="block w-full rounded-lg border border-[#4A3523]/30 px-3 py-2 text-left text-sm uppercase tracking-[0.18em] text-[#4A3523] hover:bg-[#EADBC5]"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <NavLink
+                  to="/login"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg bg-[#3E2719] px-3 py-2 text-sm uppercase tracking-[0.18em] text-[#F5ECE0]"
+                >
+                  Login
+                </NavLink>
+              )}
+            </li>
           </ul>
         </div>
       )}

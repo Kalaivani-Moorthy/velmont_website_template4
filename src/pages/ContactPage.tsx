@@ -1,8 +1,10 @@
-import { siteInfo } from '../data'
+﻿import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 function ContactPage() {
   useReveal()
+  const { content } = useContent()
+  const { siteInfo } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -41,3 +43,4 @@ function ContactPage() {
 }
 
 export default ContactPage
+

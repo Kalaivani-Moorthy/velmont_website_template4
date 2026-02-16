@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import caro7 from '../assets/caro7.jpg'
 import pic3 from '../assets/pic3.jpg'
-import { events, missionText, siteInfo, visionText, wixImages } from '../data'
+import { wixImages } from '../data'
+import { useContent } from '../context/ContentContext'
 import useReveal from '../hooks/useReveal'
 
 function HomePage() {
   useReveal()
+  const { content } = useContent()
+  const { events, missionText, siteInfo, visionText } = content
 
   return (
     <div className="pt-[96px] md:pt-[110px]">
@@ -60,7 +63,7 @@ function HomePage() {
             <div className="mt-5 space-y-3">
               {events.map((event, index) => (
                 <article key={event.title} data-reveal="true" className="rounded-2xl border border-[#4A3523]/15 bg-[#FFF9F0] p-5 opacity-0 translate-x-10 transition-all duration-700" style={{ transitionDelay: `${index * 90}ms` }}>
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#8D5D33]">{event.date} � {event.time}</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-[#8D5D33]">{event.date} • {event.time}</p>
                   <p className="mt-1 text-xl font-bold text-[#2D1D12]">{event.title}</p>
                   <p className="mt-2 text-[#5C4634]">{event.details}</p>
                 </article>
@@ -74,3 +77,4 @@ function HomePage() {
 }
 
 export default HomePage
+
